@@ -13,4 +13,4 @@ Router.route('/', {template: 'home'});
 Router.route('/home', {template: 'home'});
 Router.route('/about');
 Router.route('/contact');
-
+Router.route('/lab-slick');
