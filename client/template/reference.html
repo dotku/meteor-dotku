@@ -1,0 +1,11 @@
+<template name="reference">
+  <h2>参考资料</h2>
+  {{#each reference}}
+  <div class="media">
+    <div class="media-body">
+      <h3 class="media-heading">{{title}}</h3>
+      <p>{{{description}}}[<a href="{{url}}">Link</a>]</p>
+    </div>
+  </div>
+  {{/each}}
+</template>

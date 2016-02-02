@@ -1,0 +1,11 @@
+<template name="jobs">
+  <h2>就业机会</h2>
+  {{#each jobs}}
+  <div class="media">
+    <div class="media-body">
+      <h3 class="media-heading">{{title}}</h3>
+      <p>{{description}}[<a href="{{url}}">link</a>]</p>
+    </div>
+  </div>
+  {{/each}}
+</template>

@@ -1,0 +1,56 @@
+<template name="note">
+<h2>研究笔记</h2>
+<h3>2016/01/31</h3>
+<ul>
+  <li>Meteor 将会自动分析文件夹中的内容，所有 CSS, JavaScript 都会被自动载入</li>
+  <li>文件的载入顺序是按照文件名的字母先后顺序进行的，以 main- 开头的文件名将最后倒入</li>
+  <li>每次在文件更新后，只需保存，系统将自动更新页面</li>
+  <li>/client 目录会被自动识别为前端目录，/server 则是后端目录，前端文件在该目录下无法被识别，/lib 
+  会最先加载，/client/template 用于放置模板</li>
+  <li>可以通过 <code>meteor deploy name.meteor.com</code> 来部署你的 meteor 
+  演示，官方提供免费的演示平台。</li>
+</ul>
+<h3>2016/01/31</h3>
+<ul>
+  <li>每个前端页面都必须要有一个&lt;body&gt;、&lt;head&gt; 或 &lt;template&gt; 
+  标签，否则会导致语法错误</li>
+  <li>系统基于 UTF-8 编码，所有页面将自动转译为 UTF-8 格式，CSS 中的 <code>@charset "utf-8";</code> 
+  都会被忽略掉</li>
+  <li>模板的好处在于，模板的位置可以通过模板置标来实现布局，不受载入文件名优先权的限制</li>
+  <li>数据是通过 Template.helpper 来绑定的。
+    <pre>&lt;!-- File: /template/links.html --&gt;
+&lt;template name=&quot;links&quot;&gt;
+&lt;h2&gt;友情链接&lt;/h2&gt;
+&lt;ul&gt;
+  &#123;&#123;#each links&#125;&#125;
+  &lt;li&gt;&lt;a href=&quot;&#123;&#123;url&#125;&#125;&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/a&gt;&lt;/li&gt;
+  &#123;&#123;/each&#125;&#125;
+&lt;/ul&gt;
+&lt;/template&gt;</pre>
+    <pre>&lt;!-- File: /data/links_list.js --&gt;
+var linksData = [
+  {
+    title: '中小学信息技术教育网',
+    url: 'http://www.nrcce.com/'
+  }, 
+  {
+    title: '科学网',
+    url: 'http://www.sciencenet.cn'
+  },
+  {
+    title: '衡天香港服务器',
+    url: 'http://my.hengtian.org/aff.php?aff=2766'
+  }
+];
+Template.links.helpers({
+  links: linksData
+});</pre>
+  </li>
+  <li>你可以通过 <code>meteor deploy projectName.meteor.com</code> 来更新部署项目。</li>
+  <li>/public 目录下的 html 文件不会自动刷新</li>
+  <li>可以安装 Iron Router 或者 Flow Router，来实现路由功能；Iron Router 
+  相对来说比较受欢迎（**注意** 当 Router 开启的时候，建议把 main 等文件都模板化，否则 Route 
+  时候都会默认下加载这些文件，出现多余的内容显示）</li>
+  <li>同一个 template 无法被 Iron Router 重复使用</li>
+</ul>
+</template>
